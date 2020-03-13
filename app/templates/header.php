@@ -14,7 +14,7 @@ $is_auth = (bool)rand(0, 1);
 
     <!-- favicon icon -->
 
-    <title>Blog</title>
+    <title> <?= $title; ?></title>
 
     <!-- common css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
