@@ -14,9 +14,12 @@ if ($page == "") {
 }
 else {
     if (file_exists("templates/$page.php")) {
+
+        if(file_exists("Controllers/$page-controller.php")) {
+            require ("Controllers/$page-controller.php");
+        }
         require ("templates/$page.php");
-    }
-    else {
+    } else {
         require ("templates/home.php");
     }
 }
