@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <input type="email" class="form-control" id="email" name="email"
                            placeholder="Email"
-                           value="<?= (!empty($data['name']['value'])) ? $data['email']['value'] : "" ?>"
+                           value="<?= (!empty($data['email']['value'])) ? $data['email']['value'] : "" ?>"
                     >
                     <?= (!empty($data['email']['error-message']))? "<p class='warning-message'>" . ($data['email']['error-message']) . "</p>" : "" ?>
                 </div>
