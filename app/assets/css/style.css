@@ -1642,3 +1642,6 @@ img.profile-image
     margin: 0px auto 20px;
     display: block;
 }
+.warning-message {
+    color: red;
+}
