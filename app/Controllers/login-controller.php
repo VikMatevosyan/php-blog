@@ -1,6 +1,10 @@
 <?php
+
+
 function validateLogin()
 {
+    $login = "valod@test.com";
+    $pass = '$2y$10$cEuaRzQ1zDEuIw6rip2bwO4pUQXNFfVuZT.1gqulJZb5mHTnPAGES';
     $data = [
         "email" => [
             "value" => "",
@@ -9,6 +13,9 @@ function validateLogin()
         "password" => [
             "value" => "",
             "error-message" => ""
+        ],
+        "authorization" => [
+            "error-message" => ""
         ]
     ];
     if (empty($_POST)) {
@@ -16,24 +23,37 @@ function validateLogin()
     }
 
 
-    if(empty($_POST['email'])) {
+    if (empty($_POST['email'])) {
         $data['email']['error-message'] = "Email is required";
     } else {
         $data['email']['value'] = strip_tags($_POST['email']);
-        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $data['email']['error-message'] = "Email is not correct";
+        } else {
+            if ($data['email']['value'] != $login) {
+                $data['email']['error-message'] = "Email or password is not correct";
+            }
         }
     }
-    if(empty($_POST['password'])) {
+    if (empty($_POST['password'])) {
         $data['password']['error-message'] = "Password is required";
     } else {
-//        $data['password']['value'] = $_POST['password'];
+        if (empty($data['email']['error-message']) && $data['email']['value'] == $login &&
+        password_verify($_POST['password'], $pass)
+        ) {
+
+            setcookie("isLoggedIn", true, strtotime("+2 days"));
+            header("Location:?p=profile");
+        } else {
+            $data['authorization']['error-message'] = "Email or password is not correct";
+        }
     }
     return $data;
 }
-function areThereErrors ($data)
+
+function areThereErrors($data)
 {
-    if(empty($_POST)) {
+    if (empty($_POST)) {
         return true;
     }
     foreach ($data as $info) {
@@ -43,8 +63,9 @@ function areThereErrors ($data)
     }
     return false;
 }
+
 $data = validateLogin();
 
-if (!areThereErrors($data)) {
-    header("Location:?p=profile");
-}
+//if (!areThereErrors($data)) {
+//    header("Location:?p=profile");
+//}

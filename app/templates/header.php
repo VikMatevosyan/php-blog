@@ -1,10 +1,3 @@
-<?php
-$is_auth = (bool)rand(0, 1);
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,14 +59,17 @@ $is_auth = (bool)rand(0, 1);
                 <ul class="nav navbar-nav text-uppercase pull-right">
 
                     <?php
-                    if ($is_auth == true) {
+                    $isAuth = !empty($_COOKIE['isLoggedIn']) ? true : false;
+                    if ($isAuth) {
                         ?>
                         <li><a href="?p=profile">My profile</a></li>
+                        <li><a href="?p=log-out">Log out</a></li>
                         <?php
                     } else {
                         ?>
                         <li><a href="?p=register">Register</a></li>
                         <li><a href="?p=login">Login</a></li>
+
                         <?php
                     }
                     ?>
