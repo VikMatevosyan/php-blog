@@ -63,7 +63,7 @@
                     if ($isAuth) {
                         ?>
                         <li><a href="?p=profile">My profile</a></li>
-                        <li><a href="?p=log-out">Log out</a></li>
+                        <li><a href="?p=logout">Log out</a></li>
                         <?php
                     } else {
                         ?>

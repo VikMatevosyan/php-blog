@@ -29,10 +29,6 @@ function validateLogin()
         $data['email']['value'] = strip_tags($_POST['email']);
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $data['email']['error-message'] = "Email is not correct";
-        } else {
-            if ($data['email']['value'] != $login) {
-                $data['email']['error-message'] = "Email or password is not correct";
-            }
         }
     }
     if (empty($_POST['password'])) {
