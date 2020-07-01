@@ -17,7 +17,7 @@ name VARCHAR(100)
 CREATE TABLE users (
 id INT,
 name VARCHAR(100),
-email VARCHAR(40),
+email VARCHAR(80),
 avatar VARCHAR(40),
 password VARCHAR(40),
 isActive VARCHAR(40)
