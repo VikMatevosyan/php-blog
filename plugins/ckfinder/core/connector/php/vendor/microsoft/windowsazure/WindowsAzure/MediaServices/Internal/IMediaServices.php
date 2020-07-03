@@ -400,7 +400,7 @@ interface IMediaServices extends FilterableService
     public function getJobTemplateList();
 
     /**
-     * Get task templates for job template.
+     * Get task views for job template.
      *
      * @param WindowsAzure\MediaServices\Models\JobTemplate|string $jobTemplate Job
      * template data or jobTemplate Id
@@ -421,7 +421,7 @@ interface IMediaServices extends FilterableService
     public function deleteJobTemplate($jobTemplate);
 
     /**
-     * Get list of task templates.
+     * Get list of task views.
      *
      * @return array
      */
