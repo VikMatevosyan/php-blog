@@ -13,6 +13,9 @@ function validateRegister()
         "password" => [
             "value" => "",
             "error-message" => ""
+        ],
+        "authorization" => [
+            "error-message" => ""
         ]
     ];
 
@@ -20,20 +23,20 @@ function validateRegister()
         return $data;
     }
 
-    if(empty($_POST['name'])) {
+    if (empty($_POST['name'])) {
         $data['name']['error-message'] = "Name is required";
     } else {
         $data['name']['value'] = strip_tags($_POST['name']);
     }
-    if(empty($_POST['email'])) {
+    if (empty($_POST['email'])) {
         $data['email']['error-message'] = "Email is required";
     } else {
         $data['email']['value'] = strip_tags($_POST['email']);
-        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $data['email']['error-message'] = "Email is not correct";
         }
     }
-    if(empty($_POST['password'])) {
+    if (empty($_POST['password'])) {
         $data['password']['error-message'] = "Password is required";
     } else {
         $data['password']['value'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -41,9 +44,9 @@ function validateRegister()
     return $data;
 }
 
-function areThereErrors ($data)
+function areThereErrors($data)
 {
-    if(empty($_POST)) {
+    if (empty($_POST)) {
         return true;
     }
     foreach ($data as $info) {
@@ -57,6 +60,16 @@ function areThereErrors ($data)
 $data = validateRegister();
 
 if (!areThereErrors($data)) {
-    addNewUser($data['name']['value'],$data['email']['value'],$data['password']['value']);
+    $res = addNewUser($data['name']['value'], $data['email']['value'], $data['password']['value']);
+    if (!$res) {
+        $err = mysqli_error();
+        if ($err = "Duplicate entry'" . $data['email']['value'] . "'for key 'email'") {
+            $data['authorization']['error-message'] =
+                "User with email '". $data['email']['value'] . "'already exists";
+       }
+    }
+    else {
+        header("Location:?p=login");
+    }
 }
 
