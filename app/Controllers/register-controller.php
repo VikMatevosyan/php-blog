@@ -31,7 +31,7 @@ function validateRegister()
     if (empty($_POST['email'])) {
         $data['email']['error-message'] = "Email is required";
     } else {
-        $data['email']['value'] = strip_tags($_POST['email']);
+        $data['email']['value'] = trim(strip_tags($_POST['email']));
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $data['email']['error-message'] = "Email is not correct";
         }

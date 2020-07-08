@@ -24,12 +24,12 @@ isActive VARCHAR(40)
 );
 
 -- 1. Գտնում է բոլոր այն քաղաքների անունները, որոնց երկրի կոդը սկսվում է "N" տառով
-SELECT `Code`
-FROM country
-WHERE `Code` LIKE "N%";
+SELECT `Name`
+FROM city
+WHERE `CountryCode` LIKE "N%";
 
 -- 2. Գտնում է բոլոր այն քաղաքների անունները, որոնց բնակչության քանակը փոքր է 100-ից
-SELECT `Population`
+SELECT `Name`, `Population`
 FROM city
 WHERE `Population` < 100;
 
@@ -56,7 +56,7 @@ WHERE (GovermentForm = 'Federal Republic') or (GovermentForm = 'Republic')
 -- 7. Երկրները դասավորել ըստ մայրցամաքների, ռեգիոնների, տարածքների
 SELECT `Name`
 FROM country
-ORDER BY `Region`, SurfaceArea
+ORDER BY `Continent`, `Region`, `SurfaceArea`
 
 -- 8.Գտնել այն երկրների անունները և դրանց քաղաքների անունները՝ իրենց բնակչության թվով (մեկ սյան մեջ, =ով իրարից բաժանած),
 -- որոնք գտնվում են Asia մայրցամաքում
