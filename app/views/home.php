@@ -1,81 +1,13 @@
 <div class="col-md-8">
 
     <?php
-    $data = [
-        [
-            'link' => "blog.html",
-            'img' => "assets/images/blog-1.jpg",
-            'category' => "Travel",
-            'title' => "Home is peaceful place",
-            'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
-            'author' => "Rubel",
-            'date' => "February 12, 2019"
-        ],
-        [
-            'link' => "blog.html",
-            'img' => "assets/images/abc.jpg",
-            'category' => "craft",
-            'title' => "wooden table is beautiful",
-            'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
-            'author' => "Rubel",
-            'date' => "February 10, 2019"
-        ],
-        [
-            'link' => "blog.html",
-            'img' => "assets/images/blog-2.jpg",
-            'category' => "Lifestyle",
-            'title' => "Small work station",
-            'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
-            'author' => "Rubel",
-            'date' => "February 12, 2018"
-        ],
-        [
-            'link' => "blog.html",
-            'img' => "assets/images/blog-3.jpg",
-            'category' => "Mission",
-            'title' => "Waiting to launch on the sky",
-            'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
-            'author' => "Rubel",
-            'date' => "February 12, 2018"
-        ],
-        [
-            'link' => "blog.html",
-            'img' => "assets/images/blog-4.jpg",
-            'category' => "Cloth",
-            'title' => "A day labour wore jeans",
-            'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
-            'author' => "Rubel",
-            'date' => "February 12, 2018"
-        ],
-    ];
-
     foreach ($data as $article) {
         ?>
         <article class="post">
             <div class="post-thumb">
-                <a href="<?= $article['link']; ?>"><img src="<?= $article['img']; ?>" alt=""></a>
+                <a href="<?= $article['url']; ?>"><img src="<?= $article['image']; ?>" alt=""></a>
 
-                <a href="<?= $article['link']; ?>" class="post-thumb-overlay text-center">
+                <a href="<?= $article['url']; ?>" class="post-thumb-overlay text-center">
                     <div class="text-uppercase text-center">View Post</div>
                 </a>
             </div>
@@ -83,7 +15,7 @@
                 <header class="entry-header text-center text-uppercase">
                     <h6><a href="#"><?= $article['category']; ?></a></h6>
 
-                    <h1 class="entry-title"><a href="<?= $article['link']; ?>"><?= $article['title']; ?></a></h1>
+                    <h1 class="entry-title"><a href="<?= $article['url']; ?>"><?= $article['title']; ?></a></h1>
 
 
                 </header>
@@ -91,7 +23,7 @@
                     <p> <?= $article['text']; ?> </p>
 
                     <div class="btn-continue-reading text-center text-uppercase">
-                        <a href="<?= $article['link']; ?>" class="more-link">Continue Reading</a>
+                        <a href="<?= $article['url']; ?>" class="more-link">Continue Reading</a>
                     </div>
                 </div>
                 <div class="social-share">
