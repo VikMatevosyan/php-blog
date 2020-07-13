@@ -1,6 +1,6 @@
 <?php
 
-$page = "";
+$page = "hom";
 $title = "Home";
 
 if (!empty($_GET) && !empty($_GET['p'])) {
@@ -8,12 +8,9 @@ if (!empty($_GET) && !empty($_GET['p'])) {
 }
 
 require ("models/Model.php");
+require ("Controllers/controller.php");
 require("views/header.php");
 
-if ($page == "") {
-    require("views/home.php");
-}
-else {
     if (file_exists("views/$page.php")) {
         if(file_exists("models/$page-model.php")) {
             require ("models/$page-model.php");
@@ -25,9 +22,9 @@ else {
     } else {
         require("views/home.php");
     }
-}
+
 require("views/aside.php");
 require("views/footer.php");
 
-?>
+
 

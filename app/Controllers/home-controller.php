@@ -1,7 +1,7 @@
 <?php
 $data = mysqli_fetch_all(getAllBlogPosts(), MYSQLI_ASSOC);
 
-function formatDAte($data)
+function formatDate($data)
 {
     foreach ($data as &$post) {
         $post['date'] = date("F d, Y",strtotime($post['date']));
@@ -9,5 +9,5 @@ function formatDAte($data)
     return $data;
 }
 
-$data = formatDAte($data);
+$data = formatDate($data);
 
