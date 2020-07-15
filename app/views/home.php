@@ -5,9 +5,9 @@
         ?>
         <article class="post">
             <div class="post-thumb">
-                <a href="<?= $article['url']; ?>"><img src="<?= $article['image']; ?>" alt=""></a>
+                <a href="?p=post&url <?= $article['url']; ?>"><img src="<?= $article['image']; ?>" alt=""></a>
 
-                <a href="<?= $article['url']; ?>" class="post-thumb-overlay text-center">
+                <a href="?p=post&url <?= $article['url']; ?>" class="post-thumb-overlay text-center">
                     <div class="text-uppercase text-center">View Post</div>
                 </a>
             </div>
@@ -18,9 +18,7 @@
                     ?>
                     <h6>
                         <?php
-                        foreach ($cats
-
-                        as $ind => $cat) {
+                        foreach ($cats as $ind => $cat) {
                         $cat = explode('=', $cat);
                         ?>
                         <a href="?page=posts&category=<?= $cat[0]; ?>">
@@ -30,13 +28,12 @@
                                 echo ",";
                             }
                             ?>
-                        </a>
-                    </h6>
+                        </a></h6>
                 <?php
                 }
                 ?>
 
-                    <h1 class="entry-title"><a href="<?= $article['url']; ?>"><?= $article['title']; ?></a></h1>
+                    <h1 class="entry-title"><a href="?p=post&url <?= $article['url']; ?>"><?= $article['title']; ?></a></h1>
 
 
                 </header>
@@ -44,7 +41,7 @@
                     <p> <?= $article['text']; ?> </p>
 
                     <div class="btn-continue-reading text-center text-uppercase">
-                        <a href="<?= $article['url']; ?>" class="more-link">Continue Reading</a>
+                        <a href="?p=post&url <?= $article['url']; ?>" class="more-link">Continue Reading</a>
                     </div>
                 </div>
                 <div class="social-share">
