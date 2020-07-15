@@ -1,5 +1,5 @@
 <?php
-function getAllBlogPosts()
+function getAllBlogPosts($limit, $offset)
 {
     global $conn;
     $sql = "SELECT blog_posts.id, `title`, `url`, `author`, `date`, `image`, LEFT(`text`, 500) 
@@ -10,10 +10,14 @@ function getAllBlogPosts()
             ON category_id = categories.id
             WHERE isActive = 1
             GROUP BY blog_posts.id
-            ";
-
+            LIMIT $limit OFFSET $offset";
     $res = mysqli_query($conn, $sql);
     return $res;
+}
 
-
+function getBlogPostsCount () {
+global $conn;
+$sql = "SELECT * FROM blog_posts";
+$ress = mysqli_query($conn, $sql);
+return mysqli_num_rows($ress);
 }

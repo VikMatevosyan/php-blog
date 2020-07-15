@@ -5,9 +5,9 @@
         ?>
         <article class="post">
             <div class="post-thumb">
-                <a href="?p=post&url <?= $article['url']; ?>"><img src="<?= $article['image']; ?>" alt=""></a>
+                <a href="?p=post&url=<?= $article['url']; ?>"><img src="<?= $article['image']; ?>" alt=""></a>
 
-                <a href="?p=post&url <?= $article['url']; ?>" class="post-thumb-overlay text-center">
+                <a href="?p=post&url=<?= $article['url']; ?>" class="post-thumb-overlay text-center">
                     <div class="text-uppercase text-center">View Post</div>
                 </a>
             </div>
@@ -19,21 +19,23 @@
                     <h6>
                         <?php
                         foreach ($cats as $ind => $cat) {
-                        $cat = explode('=', $cat);
-                        ?>
-                        <a href="?page=posts&category=<?= $cat[0]; ?>">
-                            <?= $cat[1]; ?>
-                            <?php
-                            if ($ind != count($cats) - 1) {
-                                echo ",";
-                            }
+                            $cat = explode('=', $cat);
                             ?>
-                        </a></h6>
-                <?php
-                }
-                ?>
+                            <a href="?page=posts&category=<?= $cat[0]; ?>">
+                                <?= $cat[1]; ?>
+                                <?php
+                                if ($ind != count($cats) - 1) {
+                                    echo ",";
+                                }
+                                ?>
+                            </a>
+                            <?php
+                        }
+                        ?>
+                    </h6>
 
-                    <h1 class="entry-title"><a href="?p=post&url <?= $article['url']; ?>"><?= $article['title']; ?></a></h1>
+                    <h1 class="entry-title"><a href="?p=post&url=<?= $article['url']; ?>"><?= $article['title']; ?></a>
+                    </h1>
 
 
                 </header>
@@ -41,7 +43,7 @@
                     <p> <?= $article['text']; ?> </p>
 
                     <div class="btn-continue-reading text-center text-uppercase">
-                        <a href="?p=post&url <?= $article['url']; ?>" class="more-link">Continue Reading</a>
+                        <a href="?p=post&url=<?= $article['url']; ?>" class="more-link">Continue Reading</a>
                     </div>
                 </div>
                 <div class="social-share">
@@ -61,10 +63,16 @@
     }
     ?>
     <ul class="pagination">
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+        <?php
+        for ($i = 1; $i <= $pageCount; $i++) {
+            ?>
+            <li <?=  ($currentPage == $i)? 'class="active"' : "" ?>>
+                <a href="?p=home&page=<?= $i?>"><?= $i?></a>
+            </li>
+            <?
+        }
+        ?>
+
+        <li><a href="?p=home&page=<?= $currentPage + 1?>"><i class="fa fa-angle-double-right"></i></a></li>
     </ul>
 </div>
