@@ -3,7 +3,7 @@
 namespace Guzzle\Parser\UriTemplate;
 
 /**
- * Expands URI templates using an array of variables
+ * Expands URI views using an array of variables
  *
  * @link http://tools.ietf.org/html/draft-gregorio-uritemplate-08
  */
@@ -49,7 +49,7 @@ class UriTemplate implements UriTemplateInterface
     }
 
     /**
-     * Set the regex patten used to expand URI templates
+     * Set the regex patten used to expand URI views
      *
      * @param string $regexPattern
      */

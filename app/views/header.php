@@ -59,11 +59,11 @@
                 <ul class="nav navbar-nav text-uppercase pull-right">
 
                     <?php
-                    $isAuth = !empty($_COOKIE['isLoggedIn']) ? true : false;
+                    $isAuth = !empty($_SESSION['userId']) ? true : false;
                     if ($isAuth) {
                         ?>
                         <li><a href="?p=profile">My profile</a></li>
-                        <li><a href="?p=log-out">Log out</a></li>
+                        <li><a href="?p=logout">Log out</a></li>
                         <?php
                     } else {
                         ?>

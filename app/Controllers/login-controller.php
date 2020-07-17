@@ -1,5 +1,8 @@
 <?php
-
+if (!empty($_SESSION['userId'])) {
+    session_destroy();
+    header("Location: ?" . $_SERVER['QUERY_STRING']);
+}
 
 function validateLogin()
 {
@@ -29,26 +32,26 @@ function validateLogin()
         $data['email']['value'] = strip_tags($_POST['email']);
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $data['email']['error-message'] = "Email is not correct";
-        } else {
-            if ($data['email']['value'] != $login) {
-                $data['email']['error-message'] = "Email or password is not correct";
-            }
         }
     }
     if (empty($_POST['password'])) {
         $data['password']['error-message'] = "Password is required";
     } else {
-        if (empty($data['email']['error-message']) && $data['email']['value'] == $login &&
-        password_verify($_POST['password'], $pass)
-        ) {
+        $userData = mysqli_fetch_all(getUserByEmail($data['email']['value']), MYSQLI_ASSOC);
 
-            setcookie("isLoggedIn", true, strtotime("+2 days"));
-            header("Location:?p=profile");
+        if (count($userData) == 0) {
+            $data['authorization']['error-message'] = "No such user given email";
         } else {
-            $data['authorization']['error-message'] = "Email or password is not correct";
+            if (password_verify($_POST['password'], $userData[0]["password"])) {
+                setcookie("isLoggedIn", true, strtotime("+2 days"));
+                $_SESSION['userId'] = $userData[0]["id"];
+                header("Location:?p=profile");
+            } else {
+                $data['authorization']['error-message'] = "Email or password is not correct";
+            }
         }
+        return $data;
     }
-    return $data;
 }
 
 function areThereErrors($data)
