@@ -61,18 +61,28 @@
         </article>
         <?php
     }
-    ?>
-    <ul class="pagination">
-        <?php
-        for ($i = 1; $i <= $pageCount; $i++) {
-            ?>
-            <li <?=  ($currentPage == $i)? 'class="active"' : "" ?>>
-                <a href="?p=home&page=<?= $i?>"><?= $i?></a>
-            </li>
-            <?
-        }
+    if ($pageCount > 1) {
         ?>
+        <ul class="pagination">
+            <?php
+            for ($i = 1; $i <= $pageCount; $i++) {
+                ?>
+                <li <?= ($currentPage == $i) ? 'class="active"' : "" ?>>
+                    <a href="?p=home&page=<?= $i ?>"><?= $i ?></a>
+                </li>
+                <?php
+            }
+            ?>
+            <?php
+            if ($currentPage < $pageCount) {
+                ?>
+                <li><a href="?p=home&page=<?= $currentPage + 1 ?>"><i class="fa fa-angle-double-right"></i></a></li>
+                <?php
+            }
+            ?>
+        </ul>
+        <?php
+    }
+    ?>
 
-        <li><a href="?p=home&page=<?= $currentPage + 1?>"><i class="fa fa-angle-double-right"></i></a></li>
-    </ul>
 </div>
