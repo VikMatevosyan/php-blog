@@ -4,7 +4,7 @@
 
         <h3 class="text-uppercase">My profile</h3>
         <br>
-        <img src="assets/images/users/ <?= !empty($data['image'])? htmlspecialchars($data['image']): ""; ?>" alt="" class="profile-image">
+        <img src="assets/images/users/<?= !empty($data['image'])? htmlspecialchars($data['image']): ""; ?>" alt="" class="profile-image">
         <form class="form-horizontal contact-form" role="form" method="post" action="" enctype="multipart/form-data">
             <div class="form-group">
                 <div class="col-md-12">
@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <input type="email" class="form-control" id="email" name="email"
                            placeholder="Email" required
-                           value="<?= !empty($data['name'])? htmlspecialchars($data['name']): ""; ?>"
+                           value="<?= !empty($data['email'])? htmlspecialchars($data['email']): ""; ?>"
                     >
                 </div>
             </div>

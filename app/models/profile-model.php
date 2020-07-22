@@ -4,7 +4,7 @@ function getUserInfo($id)
 {
     global $conn;
     $sql = "SELECT name, email, image FROM users 
-            WHERE isActtive = 1 AND id = $id";
+            WHERE isActive = 1 AND id = $id";
 
     $res = mysqli_query($conn, $sql);
     if (!$res) {
@@ -13,9 +13,9 @@ function getUserInfo($id)
     return $res;
 }
 
-function updateUserinfo () {
+function updateUserinfo ($data) {
     global $conn;
-    $sql = "UPDATE users SET WHERE isActtive = 1";
+    $sql = "UPDATE users SET ";
     foreach ($data as $col => $val) {
         $sql .= $col . " =  '$val'";
     }

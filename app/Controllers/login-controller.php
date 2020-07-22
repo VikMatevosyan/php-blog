@@ -6,8 +6,6 @@ if (!empty($_SESSION['userId'])) {
 
 function validateLogin()
 {
-    $login = "valod@test.com";
-    $pass = '$2y$10$cEuaRzQ1zDEuIw6rip2bwO4pUQXNFfVuZT.1gqulJZb5mHTnPAGES';
     $data = [
         "email" => [
             "value" => "",

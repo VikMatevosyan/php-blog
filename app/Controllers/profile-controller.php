@@ -10,7 +10,7 @@ $data = getUserInfo($_SESSION['userId']);
 if (!$data) {
     header("Location: ?p=login");
 }
-$data = mysqli_fetch_array($data);
+$data = mysqli_fetch_array($data, MYSQLI_ASSOC);
 
 function validateForm()
 {
