@@ -1,6 +1,6 @@
 <?php
 
-if (!empty($_SESSION['userId'])) {
+if (empty($_SESSION['userId'])) {
     session_destroy();
     header("Location: ?p=login");
 }
